@@ -10,3 +10,16 @@
 @import url(style.css);
 @import url(colors/scheme-03.css);
 @import url(coloring.css);
+
+.d_timeline-text{
+    color: #000;
+    text-align: justify;
+}
+.lien-offre a {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 20px;
+}
