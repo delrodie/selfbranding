@@ -46,7 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $connexion;
 
     /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $lastConnectedAt;
 
@@ -158,12 +158,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getLastConnectedAt(): ?\DateTimeImmutable
+    public function getLastConnectedAt(): ?\DateTime
     {
         return $this->lastConnectedAt;
     }
 
-    public function setLastConnectedAt(?\DateTimeImmutable $lastConnectedAt): self
+    public function setLastConnectedAt(?\DateTime $lastConnectedAt): self
     {
         $this->lastConnectedAt = $lastConnectedAt;
 

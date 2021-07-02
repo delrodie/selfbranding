@@ -50,7 +50,7 @@ class Security
      */
     public function connexion()
     {
-        //$user = $this->security->getUser();
+        $user = $this->security->getUser();
         $user = $this->userRepository->findOneBy(['username'=>$this->security->getUser()->getUsername()]); //dd($user);
 
         $nombre_connexion = $user->getConnexion();

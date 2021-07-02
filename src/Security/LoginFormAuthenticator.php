@@ -5,6 +5,7 @@ namespace App\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Security;
@@ -24,10 +25,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     private $urlGenerator;
     private $security;
+    private $utils;
+    private $session;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(UrlGeneratorInterface $urlGenerator, \App\Utilities\Security $utils, SessionInterface $session)
     {
         $this->urlGenerator = $urlGenerator;
+        $this->utils = $utils;
+        $this->session = $session;
     }
 
     public function authenticate(Request $request): PassportInterface
@@ -48,8 +53,22 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+
             return new RedirectResponse($targetPath);
         }
+
+        // Mise en session du token de modiication du mot de passe
+        $tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz1234567890";
+        $tokenSession = null; $res=null;
+        for ($i=0; $i<25; $i++){
+            $res = $tab[rand(0,60)];
+            $tokenSession = $tokenSession.''.$res;
+        }
+
+        $this->session->set('updatePassword', $tokenSession);
+
+        // Mise a jour du nombre de connexion et du temps de la dernière connexion
+        $this->utils->connexion();
 
         // For example:
         //return new RedirectResponse($this->urlGenerator->generate('some_route'));
