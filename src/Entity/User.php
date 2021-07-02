@@ -40,6 +40,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $connexion;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $lastConnectedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,6 +142,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getConnexion(): ?int
+    {
+        return $this->connexion;
+    }
+
+    public function setConnexion(?int $connexion): self
+    {
+        $this->connexion = $connexion;
+
+        return $this;
+    }
+
+    public function getLastConnectedAt(): ?\DateTimeImmutable
+    {
+        return $this->lastConnectedAt;
+    }
+
+    public function setLastConnectedAt(?\DateTimeImmutable $lastConnectedAt): self
+    {
+        $this->lastConnectedAt = $lastConnectedAt;
 
         return $this;
     }
