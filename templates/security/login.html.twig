@@ -1,0 +1,68 @@
+{% extends 'security_layout.html.twig' %}
+
+{% block title %}{{parent()}} Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="signin-sidebar">
+        <div class="signin-sidebar-body">
+            <a href="{{ path('app_home') }}" class="sidebar-logo mg-b-40"><span>SELFBRANDING</span></a>
+
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h5 class="signin-subtitle">{% trans %}Please sign in{% endtrans %}</h5>
+                {% for label, messages in app.flashes(['success', 'warning']) %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }} alert-dismissible mg-b-0 fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <div class="signin-form">
+                    <div class="form-group">
+                        <label for="inputUsername">{% trans %}Login{% endtrans %}</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="off" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label class="d-flex justify-content-between">
+                            <span>{% trans %}Mot de passe{% endtrans %}</span>
+                        </label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" required>
+                    </div>
+                </div>
+
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+                #}
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me" id="remember_me"> Se souvenir de moi
+                    </label>
+                </div>
+
+                <div class="form-group d-flex mg-b-0">
+                    <button type="submit" class="btn btn-brand-01 btn-uppercase flex-fill">{% trans %}Sign In{% endtrans %}</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
