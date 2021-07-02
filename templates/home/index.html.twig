@@ -155,5 +155,37 @@
         </div>
     </section>
 
+    <section id="selfbranding-encyclopreneur" data-bgimage="url({{ absolute_url(asset('/frontend/images/bg2.jpg')) }}) center fixed">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeInRight">
+                    <h4 class="title">Encyclopreneurs</h4>
+                    <h2 class="title">Nos entrepreneurs</h2>
+                    <div class="title-underline"></div>
+                </div>
+            </div>
+            <div class="row wow fadeInRight" data-wow-delay=".25s">
+                <div class="col-lg-4 col-md-6 mb30">
+                    <div class="bloglist item">
+                        <div class="post-content">
+                            <div class="post-image d-hover-zoom">
+                                <a class="image-popup" href="{{ absolute_url(asset('/frontend/images/encyclopreneur/02-josiane_encyclopreneur.jpg')) }})">
+                                    <img alt="" src="{{ absolute_url(asset('/frontend/images/encyclopreneur/02-josiane_encyclopreneur.jpg')) }}">
+                                </a>
+                                <div class="post-info">
+                                    <div class="inner">
+                                        <span class="post-date">Josiane Asso Lobar</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <h4><a href="bio.html"><i class="fa fa-eye"></i> Biographie</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
