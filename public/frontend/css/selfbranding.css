@@ -15,6 +15,10 @@
     color: #000;
     text-align: justify;
 }
+.d_timeline-item p, .presentation p{
+    color: #000;
+    text-align: justify;
+}
 .lien-offre a {
     display: inline-block;
     font-weight: 500;

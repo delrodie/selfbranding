@@ -43,32 +43,20 @@
                 <div class="col-lg-6 mb-sm-30 text-center">
                     <div class="de-images">
                         <div class="d-hover-zoom wow fadeInRight">
-                            <a class="image-popup" href="{{ absolute_url(asset('/frontend/images/presentation/selfbranding_marque.jpg')) }}">
-                                <img class="img-fluid" src="{{ absolute_url(asset('/frontend/images/presentation/selfbranding_marque.jpg')) }}" alt="" />
+                            <a class="image-popup" href="{{ absolute_url(asset('upload/presentation/'~ presentation.media1)) }}">
+                                <img class="img-fluid" src="{{ absolute_url(asset('upload/presentation/'~ presentation.media1)) }}" alt="{{ presentation.titre }}" />
                             </a>
                         </div>
                         <div class="d-hover-zoom di-small-2 wow fadeInLeft">
-                            <a class="image-popup" href="{{ absolute_url(asset('/frontend/images/presentation/selfbranding_services.jpg')) }}">
-                                <img src="{{ absolute_url(asset('/frontend/images/presentation/selfbranding_services.jpg')) }}" alt="" />
+                            <a class="image-popup" href="{{ absolute_url(asset('upload/presentation/'~ presentation.media2)) }}">
+                                <img src="{{ absolute_url(asset('upload/presentation/'~ presentation.media2)) }}" alt="{{ presentation.titre }}" />
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 offset-md-1 wow fadeInRight" data-wow-delay=".5s">
+                <div class="col-lg-5 offset-md-1 wow fadeInRight presentation" data-wow-delay=".5s">
                     <h2>Self<span class="id-color">Branding</span></h2>
-                    <p style="color:#000; text-align:justify;">
-                        SelfBranding est une jeune entreprise née de l'initiative des entrepreneurs de divers profils ayant decidé de s'associer
-                        pour apporter des solutions précises aux problématiques du digital, de l'entrepreneur et du développement de la jeunesse,
-                        des secteurs dans lesquels ils ont accumulés de l'expérience aussi bien dans l'environnement local qu'international.
-                    </p>
-                    <p style="color:#000; text-align:justify;">
-                        Se voulant &ecirc;tre une entreprise exceptionnelle, nos offres sont essentiellement axées sur des besoins
-                        insatisfaits des entreprises, institutions et individus en apportant des réponses précises et pointues à ces bésoins.
-                    </p>
-                    <p style="color:#000; text-align:justify;">
-                        A ce jour, SELFBRANDING a lancé et suivi divers programmes entrepreneuriaux en collaboration avec des entreprises et réseaux
-                        de promotion du secteur entrepreneurial ivoirien et africain.
-                    </p>
+                    {{ presentation.contenu|raw }}
                 </div>
             </div>
         </div>
