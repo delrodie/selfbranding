@@ -1,0 +1,23 @@
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="exampleModalLabel4">{{ service.titre }}</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="mt-3">
+                {% if service.media %}
+                    <img src="{{ absolute_url(asset('upload/service/'~ service.media)) }}" alt="{{ service.titre }}" class="img-thumbnail" width="300" style="float: left; margin-right: 20px;">
+                {% endif %}
+                {{ service.contenu|raw }}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            {{ include('backend_service/_delete_form.html.twig') }}
+            <a href="{{ path('backend_service_edit', {'id': service.id}) }}" class="btn btn-primary"> Modifier</a>
+        </div>
+    </div>
+</div>
