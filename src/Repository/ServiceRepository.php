@@ -19,6 +19,29 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function findByTag($tag,$antitag = null)
+    {
+        $tag1 = "accompagnement"; $tag2="suivi";
+
+        $query =  $this->createQueryBuilder('s');
+        if ($antitag){
+            $query->where('s.titre LIKE :tag1')
+                ->orWhere('s.titre LIKE :tag2')
+                ->setParameters([
+                    'tag1' => '%'.$tag1.'%',
+                    'tag2' => '%'.$tag2.'%'
+                ])
+            ;
+        }else{
+            $query->where('s.titre LIKE :tag')
+            ->setParameter('tag', '%'.$tag.'%');
+        }
+
+        return $query
+            ->getQuery()->getResult()
+            ;
+    }
+
     // /**
     //  * @return Service[] Returns an array of Service objects
     //  */
