@@ -1,0 +1,70 @@
+{% extends 'single_layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="title date"><span>Encyclopreneur</span>{{ encyclopreneur.prenoms|title }} {{ encyclopreneur.nom|upper }}</h2>
+                <div class="title-underline"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 offset-md-2 mb-sm-30 text-center">
+                <div class="de-images">
+                    <div class="d-hover-zoom wow fadeInRight">
+                        <a class="image-popup" href="{{ absolute_url(asset('upload/encyclopreneur/1/'~ encyclopreneur.media1)) }}">
+                            <img class="img-fluid" src="{{ absolute_url(asset('upload/encyclopreneur/1/'~ encyclopreneur.media1)) }}" alt="" />
+                        </a>
+                    </div>
+                    <div class="d-hover-zoom di-small-2 wow fadeInLeft">
+                        <a class="image-popup" href="{{ absolute_url(asset('upload/encyclopreneur/2/'~ encyclopreneur.media2)) }}">
+                            <img src="{{ absolute_url(asset('upload/encyclopreneur/2/'~ encyclopreneur.media2)) }}" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer-80"></div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 biographie">
+                {{ encyclopreneur.biographie|raw }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 mt-5" style="font-style:italic;">
+                {% if encyclopreneur.website or encyclopreneur.facebook or encyclopreneur.twitter or encyclopreneur.instagram %}
+                    Suivre l'entrepreneur.e :
+                {% endif %}
+                {% if encyclopreneur.website %}<a href="{{ encyclopreneur.website }}" target="_blank" title="{{ encyclopreneur.website }}"><i class="fa fa-globe fa-lg"></i></a>{% endif %} &nbsp;
+                {% if encyclopreneur.facebook %}<a href="https://facebook.com/{{ encyclopreneur.facebook }}" target="_blank" title="https://facebook.com/{{ encyclopreneur.facebook }}"><i class="fa fa-facebook-square fa-lg"></i></a>{% endif %} &nbsp;
+                {% if encyclopreneur.twitter %}<a href="https://twitter.com/{{ encyclopreneur.twitter }}" target="_blank" title="https://twitter.com/{{ encyclopreneur.twitter }}"><i class="fa fa-twitter fa-lg"></i></a>{% endif %} &nbsp;
+                {% if encyclopreneur.instagram %}<a href="https://instagram.com/{{ encyclopreneur.instagram }}" target="_blank" title="https://instagram.com/{{ encyclopreneur.instagram }}"><i class="fa fa-instagram fa-lg"></i></a>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ encyclopreneur.nom|upper }} {{ encyclopreneur.prenoms|title }}{% endblock %}
+{% block meta %}
+    {% set description = encyclopreneur.biographie|slice(0,200)|raw%}
+    <meta name="keywords" content="{{ encyclopreneur.tags }}"  />
+    <meta name="description" content="{{ description }}" />
+    <link rel="canonical" href="{{ absolute_url(path('frontend_encyclopreneur_show',{'slug': encyclopreneur.slug})) }}" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="Item" />
+    <meta property="og:title" content="SelfBranding:: Biographie de {{ encyclopreneur.nom|upper }} {{ encyclopreneur.prenoms|title }}" />
+    <meta property="og:description" content="{{ encyclopreneur.biographie|raw }}" />
+    <meta property="og:url" content="{{ absolute_url(path('frontend_encyclopreneur_show',{'slug': encyclopreneur.slug})) }}" />
+    <meta property="og:site_name" content="SelfBranding" />
+    <meta property="article:section" content="Item" />
+    <meta property="article:published_time" content="{{ encyclopreneur.createdAt|date('Y-m-d') }}T{{ encyclopreneur.createdAt|date('H:i:s') }}+00:00" />
+    <meta property="article:modified_time" content="{{ encyclopreneur.updatedAt|date('Y-m-d') }}T{{ encyclopreneur.updatedAt|date('H:i:s') }}+00:00" />
+    <meta property="og:updated_time" content="{{ encyclopreneur.updatedAt|date('Y-m-d') }}T{{ encyclopreneur.updatedAt|date('H:i:s') }}+00:00" />
+    <meta property="og:image" content="{{ absolute_url(asset('upload/encyclopreneur/2/'~ encyclopreneur.media2)) }}" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="{{ description}}"/>
+    <meta name="twitter:title" content="SelfBranding:: Biographie de {{ encyclopreneur.nom|upper }} {{ encyclopreneur.prenoms|title }}"/>
+    <meta name="twitter:domain" content="SelfBranding"/>
+    <meta name="twitter:image:src" content="{{ absolute_url(asset('upload/encyclopreneur/2/'~ encyclopreneur.media2)) }}"/>
+{% endblock %}

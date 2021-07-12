@@ -27,3 +27,12 @@
     font-style: italic;
     margin-top: 20px;
 }
+
+.biographie{
+    margin-top: 50px;
+}
+
+.biographie, .biographie p{
+    color: black;
+    text-align: justify;
+}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Encyclopreneur;
 use App\Entity\Presentation;
 use App\Entity\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,8 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'presentation' => $this->getDoctrine()->getRepository(Presentation::class)->findOneBy([],['id'=>"DESC"]),
             'developments' => $this->getDoctrine()->getRepository(Service::class)->findByTag('developpement'),
-            'suivis' => $this->getDoctrine()->getRepository(Service::class)->findByTag('developpement',true)
+            'suivis' => $this->getDoctrine()->getRepository(Service::class)->findByTag('developpement',true),
+            'encyclopreneurs' => $this->getDoctrine()->getRepository(Encyclopreneur::class)->findBy([],['id'=>"DESC"], 6)
         ]);
     }
 
