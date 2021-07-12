@@ -52,10 +52,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-
-            return new RedirectResponse($targetPath);
-        }
 
         // Mise en session du token de modiication du mot de passe
         $tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz1234567890";
@@ -69,6 +65,12 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         // Mise a jour du nombre de connexion et du temps de la dernière connexion
         $this->utils->connexion();
+
+        
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+
+            return new RedirectResponse($targetPath);
+        }
 
         // For example:
         //return new RedirectResponse($this->urlGenerator->generate('some_route'));
