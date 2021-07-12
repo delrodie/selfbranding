@@ -28,4 +28,5 @@ services:
         arguments:
             $presentationDirectory: '%kernel.project_dir%/public/upload/presentation'
             $serviceDirectory: '%kernel.project_dir%/public/upload/service'
-            #$configDirectory: '%kernel.project_dir%/public/upload/config'
+            $encyclo1Directory: '%kernel.project_dir%/public/upload/encyclopreneur/1'
+            $encyclo2Directory: '%kernel.project_dir%/public/upload/encyclopreneur/2'

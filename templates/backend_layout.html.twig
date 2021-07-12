@@ -39,7 +39,7 @@
                     <nav class="nav nav-sub">
                         <a href="{{ path('backend_presentation_index') }}" class="nav-sub-link {% if sub_menu == 'presentation' %}active{% endif %}">Presentation</a>
                         <a href="{{ path('backend_service_index') }}" class="nav-sub-link {% if sub_menu == 'service' %}active{% endif %}">Nos services</a>
-                        <a href="#" class="nav-sub-link {% if sub_menu == 'affectation' %}active{% endif %}">Encyclopreneur</a>
+                        <a href="{{ path('backend_encyclopreneur_index') }}" class="nav-sub-link {% if sub_menu == 'encyclopreneur' %}active{% endif %}">Encyclopreneur</a>
                         <a href="#" class="nav-sub-link {% if sub_menu == 'affectation' %}active{% endif %}">Blog</a>
                     </nav>
                 </li>
@@ -122,7 +122,7 @@
     <div class="content-right content-right-components">
         {% block aide %}{% endblock %}
     </div>
-    <div class="content-body content-body-components">
+    <div class="content-body {% block class%} content-body-components{% endblock %}">
         {% block body %}{% endblock %}
     </div>
 </div>

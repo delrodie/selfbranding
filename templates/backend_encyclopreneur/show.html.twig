@@ -1,0 +1,79 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}Encyclopreneur{% endblock %}
+
+{% block body %}
+    <div class="profile-sidebar">
+        <div class="profile-sidebar-header">
+            <div class="avatar"><img src="{{ absolute_url(asset('upload/encyclopreneur/1/'~ encyclopreneur.media1)) }}" class="rounded-circle" alt=""></div>
+
+            <h5>{{ encyclopreneur.nom }} {{ encyclopreneur.prenoms }}</h5>
+
+        </div>
+        <div class="profile-sidebar-body">
+
+            <label class="content-label">Medias sociaux</label>
+            <ul class="list-unstyled profile-info-list">
+                {% if encyclopreneur.website %}<li><i data-feather="globe"></i> <a href="{{ encyclopreneur.website }}" target="_blank">{{ encyclopreneur.website }}</a></li>{% endif %}
+                {% if encyclopreneur.facebook %}<li><i data-feather="facebook"></i> <a href="https://facebook.com/{{ encyclopreneur.facebook }}">@{{ encyclopreneur.facebook }}</a></li>{% endif %}
+                {% if encyclopreneur.twitter %}<li><i data-feather="twitter"></i> <a href="https://twitter.com/{{ encyclopreneur.twitter }}">@{{ encyclopreneur.twitter }}</a></li>{% endif %}
+                {% if encyclopreneur.instagram %}<li><i data-feather="instagram"></i> <a href="https://instagram.com/{{ encyclopreneur.instagram }}">@{{ encyclopreneur.instagram }}</a></li>{% endif %}
+            </ul>
+
+            <hr class="mg-y-25">
+
+            <label class="content-label">Entreprise</label>
+            <ul class="list-unstyled profile-info-list mg-b-0">
+                <li><i data-feather="briefcase"></i> <span class="tx-color-03">Abidjan</span></li>
+                <li><i data-feather="home"></i> <span class="tx-color-03">Reside à Abidjan</span></li>
+                <li><i data-feather="smartphone"></i> <a href="#">00225 0709321521</a></li>
+                <li><i data-feather="phone"></i> <a href="#">00225 09988778</a></li>
+                <li><i data-feather="mail"></i> <a href="#">mail@mail.com</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mb20 text-right">
+        <div class="col text-right">
+
+        </div>
+    </div>
+    <div class="profile-body">
+        <div class="profile-body-header">
+            <div class="nav-wrapper">
+                <ul class="nav nav-line" id="profileTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Biographie</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content pd-15 pd-sm-20">
+            <div id="overview" class="tab-pane active show">
+
+                <div class="text-right mb50">
+                    <a href="{{ path('backend_encyclopreneur_index') }}" class="btn btn-outline-primary float-right">
+                        <i class="fa fa-list"></i> Liste
+                    </a></div>
+                </div>
+
+                <hr class="mg-y-15 op-0" style="margin-bottom: 70px;">
+
+                <div class="text-color-03 mb50">{{ encyclopreneur.biographie|raw }}</div>
+
+                <div class="row mt-5 mt50 text-right" style="margin-top: 50px;">
+                    <div class="col-xs-6 col-sm-8 text-right">
+                        <a href="{{ path('backend_encyclopreneur_index') }}" class="btn btn-outline-secondary">Annuler</a>
+                        <a class="btn btn-primary" href="{{ path('backend_encyclopreneur_edit', {'id': encyclopreneur.id}) }}">Modifier</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 text-left">
+                        {{ include('backend_encyclopreneur/_delete_form.html.twig') }}
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- tab-content -->
+    </div><!-- profile-body -->
+
+{% endblock %}
+{% block class %}content-body-profile{% endblock %}

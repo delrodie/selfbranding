@@ -12,11 +12,15 @@ class GestionMedia
 {
     private $mediaPresentation;
     private $mediaService;
+    private $mediaEncyclo1;
+    private $mediaEncyclo2;
 
-    public function __construct($presentationDirectory, $serviceDirectory)
+    public function __construct($presentationDirectory, $serviceDirectory, $encyclo1Directory, $encyclo2Directory)
     {
         $this->mediaPresentation = $presentationDirectory;
         $this->mediaService = $serviceDirectory;
+        $this->mediaEncyclo1 = $encyclo1Directory;
+        $this->mediaEncyclo2 = $encyclo2Directory;
     }
 
     /**
@@ -39,6 +43,8 @@ class GestionMedia
         try {
             if ($media === 'presentation') $file->move($this->mediaPresentation, $newFilename);
             elseif ($media === 'service') $file->move($this->mediaService, $newFilename);
+            elseif ($media === 'encyclo1') $file->move($this->mediaEncyclo1, $newFilename);
+            elseif ($media === 'encyclo2') $file->move($this->mediaEncyclo2, $newFilename);
             else $file->move($this->mediaPresentation, $newFilename);
         }catch (FileException $e){
 
@@ -57,6 +63,8 @@ class GestionMedia
     public function removeUpload($ancienMedia, $media = null)
     {
         if ($media === 'presentation') unlink($this->mediaPresentation.'/'.$ancienMedia);
+        elseif ($media === 'encyclo1') unlink($this->mediaEncyclo1.'/'.$ancienMedia);
+        elseif ($media === 'encyclo2') unlink($this->mediaEncyclo2.'/'.$ancienMedia);
         elseif ($media === 'service') unlink($this->mediaService.'/'.$ancienMedia);
         else return false;
 
