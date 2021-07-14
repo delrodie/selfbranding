@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-12">{{ form_row(form.titre) }}</div>
+</div>
+{{ form_widget(form) }}
+    <div class="text-right mt-5">
+        <a href="{{ path('backend_thematique_index') }}" class="btn btn-outline-secondary">Annuler</a>
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+{{ form_end(form) }}

@@ -44,7 +44,13 @@
                     </nav>
                 </li>
             {% endif %}
-            <li class="nav-item"><a href="#" class="nav-link"><i data-feather="shopping-bag"></i> Blog</a></li>
+            <li class="nav-item {% if menu == 'blog' %}show{% endif %}">
+                <a href="#" class="nav-item with-sub"><i data-feather="shopping-bag"></i> Blog</a>
+                <nav class="nav nav-sub">
+                    <a href="{{ path('backend_thematique_index') }}" class="nav-sub-link {% if sub_menu == 'thematique' %} active{% endif %}">Thematique</a>
+                    <a href="#" class="nav-sub-link {% if sub_menu == 'article' %} active{% endif %}">Article</a>
+                </nav>
+            </li>
             <li class="nav-item"><a href="#" class="nav-link"><i data-feather="shopping-bag"></i> Newsletter</a></li>
 
         </ul>

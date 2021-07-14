@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thematique{% endblock %}
+
+{% block body %}
+    <h1>Thematique</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ thematique.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ thematique.titre }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ thematique.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('backend_thematique_index') }}">back to list</a>
+
+    <a href="{{ path('backend_thematique_edit', {'id': thematique.id}) }}">edit</a>
+
+    {{ include('backend_thematique/_delete_form.html.twig') }}
+{% endblock %}
