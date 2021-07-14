@@ -18,7 +18,9 @@ class EncyclopreneurController extends AbstractController
     public function index(): Response
     {
         return $this->render('encyclopreneur/index.html.twig', [
-            'controller_name' => 'EncyclopreneurController',
+            'encyclopreneurs' => $this->getDoctrine()->getRepository(Encyclopreneur::class)->findBy([],['id'=>"DESC"]),
+            'dernier' => $this->getDoctrine()->getRepository(Encyclopreneur::class)->findOneBy([],['updatedAt'=>'DESC']),
+            'premier' => $this->getDoctrine()->getRepository(Encyclopreneur::class)->findOneBy([],['createdAt'=>'ASC']),
         ]);
     }
 

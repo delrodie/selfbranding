@@ -4,6 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <div class="align-self-center header-col-left">
+                    <div class="logo-retour" id="logo">
+                        <a href="{{ absolute_url(path('app_home')) }}"> <i class="fa fa-home"></i>
+                            SELFBRANDING
+                        </a>
+                    </div>
+                </div>
                 <h2 class="title date"><span>Encyclopreneur</span>{{ encyclopreneur.prenoms|title }} {{ encyclopreneur.nom|upper }}</h2>
                 <div class="title-underline"></div>
             </div>
@@ -42,6 +49,13 @@
                 {% if encyclopreneur.instagram %}<a href="https://instagram.com/{{ encyclopreneur.instagram }}" target="_blank" title="https://instagram.com/{{ encyclopreneur.instagram }}"><i class="fa fa-instagram fa-lg"></i></a>{% endif %}
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 mt-5 logo-retour text-right">
+                <a href="{{ absolute_url(path('frontend_encyclopreneur_index')) }}"> <i class="fa fa-reply"></i>
+                    RETOUR
+                </a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -68,3 +82,4 @@
     <meta name="twitter:domain" content="SelfBranding"/>
     <meta name="twitter:image:src" content="{{ absolute_url(asset('upload/encyclopreneur/2/'~ encyclopreneur.media2)) }}"/>
 {% endblock %}
+
