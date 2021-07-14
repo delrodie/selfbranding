@@ -30,3 +30,4 @@ services:
             $serviceDirectory: '%kernel.project_dir%/public/upload/service'
             $encyclo1Directory: '%kernel.project_dir%/public/upload/encyclopreneur/1'
             $encyclo2Directory: '%kernel.project_dir%/public/upload/encyclopreneur/2'
+            $blogDirectory: '%kernel.project_dir%/public/upload/blog'

@@ -14,13 +14,15 @@ class GestionMedia
     private $mediaService;
     private $mediaEncyclo1;
     private $mediaEncyclo2;
+    private $mediaBlog;
 
-    public function __construct($presentationDirectory, $serviceDirectory, $encyclo1Directory, $encyclo2Directory)
+    public function __construct($presentationDirectory, $serviceDirectory, $encyclo1Directory, $encyclo2Directory, $blogDirectory)
     {
         $this->mediaPresentation = $presentationDirectory;
         $this->mediaService = $serviceDirectory;
         $this->mediaEncyclo1 = $encyclo1Directory;
         $this->mediaEncyclo2 = $encyclo2Directory;
+        $this->mediaBlog = $blogDirectory;
     }
 
     /**
@@ -45,6 +47,7 @@ class GestionMedia
             elseif ($media === 'service') $file->move($this->mediaService, $newFilename);
             elseif ($media === 'encyclo1') $file->move($this->mediaEncyclo1, $newFilename);
             elseif ($media === 'encyclo2') $file->move($this->mediaEncyclo2, $newFilename);
+            elseif ($media === 'blog') $file->move($this->mediaBlog, $newFilename);
             else $file->move($this->mediaPresentation, $newFilename);
         }catch (FileException $e){
 
@@ -66,6 +69,7 @@ class GestionMedia
         elseif ($media === 'encyclo1') unlink($this->mediaEncyclo1.'/'.$ancienMedia);
         elseif ($media === 'encyclo2') unlink($this->mediaEncyclo2.'/'.$ancienMedia);
         elseif ($media === 'service') unlink($this->mediaService.'/'.$ancienMedia);
+        elseif ($media === 'blog') unlink($this->mediaBlog.'/'.$ancienMedia);
         else return false;
 
         return true;

@@ -27,6 +27,11 @@ class Thematique
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tags;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Thematique
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getTags(): ?string
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?string $tags): self
+    {
+        $this->tags = $tags;
 
         return $this;
     }

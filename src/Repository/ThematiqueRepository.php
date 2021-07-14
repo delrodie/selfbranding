@@ -19,6 +19,11 @@ class ThematiqueRepository extends ServiceEntityRepository
         parent::__construct($registry, Thematique::class);
     }
 
+    public function liste()
+    {
+        return $this->createQueryBuilder('t')->orderBy('t.titre', 'DESC');
+    }
+
     // /**
     //  * @return Thematique[] Returns an array of Thematique objects
     //  */
