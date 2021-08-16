@@ -20,7 +20,7 @@
     <div class="sidebar-header">
         <div>
             <a href="{{ path('app_home') }}" class="sidebar-logo"><span>BACKOFFICE</span></a>
-            <small class="sidebar-logo-headline">SElfBranding</small>
+            <small class="sidebar-logo-headline">SelfBranding</small>
         </div>
     </div>
     <div id="dpSidebarBody" class="sidebar-body">
@@ -57,12 +57,12 @@
 
         <hr class="mg-t-30 mg-b-25">
 
-        {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
             <ul class="nav nav-sidebar">
                 <li class="nav-item {% if menu == 'admin' %}show{% endif %}">
                     <a href="#" class="nav-link with-sub {% if menu == 'admin' %}active{% endif %}"><i data-feather="layers"></i> Administration</a>
                     <nav class="nav nav-sub">
-                        <a href="#" class="nav-sub-link {% if sub_menu == 'usermenu' %} active{% endif %}">Utilisateur</a>
+                        <a href="{{ path('admin_user_index') }}" class="nav-sub-link {% if sub_menu == 'usermenu' %} active{% endif %}">Utilisateur</a>
                     </nav>
                 </li>
             </ul>
@@ -103,7 +103,7 @@
                                     <span>
                                         {% if app.user.roles.0 == 'ROLE_SUPER_ADMIN' %} Super Admin
                                         {% elseif app.user.roles.0 == 'ROLE_ADMIN' %} Admin
-                                        {% else %} Invitant
+                                        {% else %} Utilisateur
                                         {% endif %}
                                     </span>
                                 {% endif %}
